@@ -1,4 +1,11 @@
 id,title,selftext,score,num_comments,author,created_utc,url,upvote_ratio,over_18,edited,spoiler,stickied
+1kk0xxg,Last 2 months I have been humbled by the data engineering landscape,"Hello All,
+
+For the past 6 years I have been working in the data analyst and data engineer role (My title is Senior Data Analyst ). I have been working with Snowflake writing stored procedures, spark using databricks, ADF for orchestration, SQL server, power BI & Tableau dashboards. All the data processing has been either monthly or quarterly. I was always under the impression that I was going to be quite employable when I try to switch at some point.
+
+But the past few months have taught me that there aren't many data analyst openings and the field doesn't pay squat and is mostly for freshers and the data engineering that I have been doing isn't really actual data engineering.
+
+All the openings I see require knowledge of Kafka, docker, kubernetes, microservices, airflow, mlops, API integration, CI/CD etc. This has left me stunned at the very least. I never knew that most of the companies required such a diverse set of skills and data engineering was more of SWE rather than what I have been doing. Seriously not sure what to think of the scenario I am in.",125,44,skatez101,2025-05-11 13:23:56,https://www.reddit.com/r/dataengineering/comments/1kk0xxg/last_2_months_i_have_been_humbled_by_the_data/,0,False,False,False,False
 1kjo6uj,What are your ETL data cleaning/standardisation rules?,"As the title says. 
 
 We're in the process of rearchitecting our ETL pipeline design (for a multitude of reasons), and we want a step after ingestion and contract validation where we perform a light level of standardisation so data is more consistent and reusable. For context, we're a low data maturity organisation and there is little-to-no DQ governance over applications, so it's on us to ensure the data we use is fit for use.
@@ -12,49 +19,22 @@ These are our current thinking on rules; what do y'all do out there for yours?
 * *Remove invalid UTF-8 characters?? e.g. str.encode/decode process*
 * Trim leading/trailing whitespace
 
-(Deduplication is currently being debated as to whether it's a contract violation or something we handle)",54,22,Nightwyrm,2025-05-11 00:13:41,https://www.reddit.com/r/dataengineering/comments/1kjo6uj/what_are_your_etl_data_cleaningstandardisation/,0,False,False,False,False
-1kjfl2n,What Platform Do You Use for Interviewing Candidates?,"It seems like basically every time I apply at a company, they have a different process. My company uses a mix of Hex notebooks we cobbled together and just asking the person questions. I am wondering if anyone has any recommendations for a seamless, one-stop platform for the entire interviewing process to test a candidate? A single platform where I can test them on DAGs (airflow / dbt), SQL, Python, system diagrams, etc and also save the feedback for each test.
+(Deduplication is currently being debated as to whether it's a contract violation or something we handle)",67,25,Nightwyrm,2025-05-11 00:13:41,https://www.reddit.com/r/dataengineering/comments/1kjo6uj/what_are_your_etl_data_cleaningstandardisation/,0,False,False,False,False
+1kk5zup,"Why is ""Sort Merge Join"" is preferred over ""Shuffle Hash Join"" in Spark?","Hi all! 
 
-Thanks!",23,40,Resident-Berry3375,2025-05-10 17:29:43,https://www.reddit.com/r/dataengineering/comments/1kjfl2n/what_platform_do_you_use_for_interviewing/,0,False,False,False,False
-1kk0xxg,Last 2 months I have been humbled by the data engineering landscape,"Hello All,
+I am trying to upgrade my Spark skills (mainly using it as a user with little optimization) and some questions came to mind. I am reading everywhere that ""Sorted Merge Join"" is preferred over ""Shuffle Hash Join"" because:
 
-For the past 6 years I have been working in the data analyst and data engineer role (My title is Senior Data Analyst ). I have been working with Snowflake writing stored procedures, spark using databricks, ADF for orchestration, SQL server, power BI & Tableau dashboards. All the data processing has been either monthly or quarterly. I was always under the impression that I was going to be quite employable when I try to switch at some point.
+1. Avoids building a hash table.
+2. Allows to spill to disk.
+3. It is more scalable (as doesn't need to store the hashmap into memory). Which makes sense.
 
-But the past few months have taught me that there aren't many data analyst openings and the field doesn't pay squat and is mostly for freshers and the data engineering that I have been doing isn't really actual data engineering.
+Can any of you be kind enough to explain:
 
-All the openings I see require knowledge of Kafka, docker, kubernetes, microservices, airflow, mlops, API integration, CI/CD etc. This has left me stunned at the very least. I never knew that most of the companies required such a diverse set of skills and data engineering was more of SWE rather than what I have been doing. Seriously not sure what to think of the scenario I am in.",31,20,skatez101,2025-05-11 13:23:56,https://www.reddit.com/r/dataengineering/comments/1kk0xxg/last_2_months_i_have_been_humbled_by_the_data/,0,False,False,False,False
-1kjcssq,I have a hive tables with 1millon rows of data and its really taking time to run join,"Hi, I have hive tables where I have 1m rows of data and I need to run inner join with where condition. I am using dataproc so can you give me good approach.. thanks",21,16,Comfortable_Page_965,2025-05-10 15:24:08,https://www.reddit.com/r/dataengineering/comments/1kjcssq/i_have_a_hive_tables_with_1millon_rows_of_data/,0,False,False,False,False
-1kjjo2u,DBT full_refresh for Very Big Dataset in BigQuery,"How do we handle the initial load or backfills in BigQuery using DBT for a huge dataset?
+* How sorting both tables (O(n log n)) is faster than building a hash table O(n)?
+* Why can't a hash table be spilled to disk (even on its own format)?
 
-Consider the sample configuration below:
-
-{{ config(  
-materialized='incremental',  
-incremental\_strategy='insert\_overwrite',  
-partition\_by={  
-""field"": ""dt"",  
-""data\_type"": ""date""  
-},  
-cluster\_by=\[""orgid""\]  
-) }}  
   
-FROM {{ source('wifi\_data', 'wifi\_15min') }}  
-WHERE DATE(connection\_time) != CURRENT\_DATE  
-{% if is\_incremental() %}  
-AND DATE(connection\_time) > (SELECT COALESCE(MAX(dt), ""1990-01-01"") FROM {{ this }})  
-{% endif %}
-
-I will do some aggregations and lookup joins on the above dataset. Now, if the above source dataset (wifi\_15min) has 10B+ records per day and the expected number of partitions (DATE(connection\_time)) is 70 days, will BigQuery be able to handle 70Days\*10B=700B+ records in case of full\_refresh in a single go?
-
-Or is there a better way to handle such scenarios in DBT?",14,8,Abhishek4996,2025-05-10 20:34:09,https://www.reddit.com/r/dataengineering/comments/1kjjo2u/dbt_full_refresh_for_very_big_dataset_in_bigquery/,0,False,False,False,False
-1kjn1gu,Single shot a streamlit and gradio app into existence,"Hey everyone, wanted to share an experimental tool, [https://v1.slashml.com](https://v1.slashml.com/?utm_source=reddit_streamlit), it can build streamlit, gradio apps and host them with a unique url, from a single prompt.
-
-The frontend is mostly vibe-coded. For the backend and hosting I use a big instance with nested virtualization and spinup a VM with every preview. The url routing is done in nginx.
-
-Would love for you to try it out and any feedback would be appreciated. ",4,3,fazkan,2025-05-10 23:14:23,https://www.reddit.com/r/dataengineering/comments/1kjn1gu/single_shot_a_streamlit_and_gradio_app_into/,0,False,False,False,False
-1kjx0a2,Need help deciding- ML vs DE,"So I got internship offers for both machine learning and data engineering but I’m not sure which one to pick. I don’t mind doing either and they both pay the same.
-
-Which one would be better in terms of future jobs opportunities, career advancement, resistance to layoffs, and pay? I don’t plan on going to grad school.",3,5,Physical-Maximum2763,2025-05-11 09:23:50,https://www.reddit.com/r/dataengineering/comments/1kjx0a2/need_help_deciding_ml_vs_de/,0,False,False,False,False
+",11,6,DataGhost404,2025-05-11 17:12:49,https://www.reddit.com/r/dataengineering/comments/1kk5zup/why_is_sort_merge_join_is_preferred_over_shuffle/,0,False,False,False,False
 1kjsirz,10 Must-Know Queries to Observe Snowflake Performance — Part 1,"Hi all — I recently wrote a practical guide that walks through 10 SQL queries you can use to **observe Snowflake performance** before diving into any tuning or optimization.
 
 The post includes queries to:
@@ -69,21 +49,15 @@ These are the queries I personally find most helpful when trying to understand w
 Here's the link:  
 👉 [https://medium.com/@arunkumarmadhavannair/10-must-know-queries-to-observe-snowflake-performance-part-1-f927c93a7b04](https://medium.com/@arunkumarmadhavannair/10-must-know-queries-to-observe-snowflake-performance-part-1-f927c93a7b04)
 
-Would love to hear if you use any similar queries or have other suggestions!",3,0,Neat-Resort9968,2025-05-11 04:19:58,https://www.reddit.com/r/dataengineering/comments/1kjsirz/10_mustknow_queries_to_observe_snowflake/,0,False,False,False,False
-1kjgh7z,Data Governance in Lakehouse Using Open Source Tools,"Hello,
+Would love to hear if you use any similar queries or have other suggestions!",8,0,Neat-Resort9968,2025-05-11 04:19:58,https://www.reddit.com/r/dataengineering/comments/1kjsirz/10_mustknow_queries_to_observe_snowflake/,0,False,False,False,False
+1kjx0a2,Need help deciding- ML vs DE,"So I got internship offers for both machine learning and data engineering but I’m not sure which one to pick. I don’t mind doing either and they both pay the same.
 
-Hope everyone is having a great weekend!
+Which one would be better in terms of future jobs opportunities, career advancement, resistance to layoffs, and pay? I don’t plan on going to grad school.",3,7,Physical-Maximum2763,2025-05-11 09:23:50,https://www.reddit.com/r/dataengineering/comments/1kjx0a2/need_help_deciding_ml_vs_de/,0,False,False,False,False
+1kjn1gu,Single shot a streamlit and gradio app into existence,"Hey everyone, wanted to share an experimental tool, [https://v1.slashml.com](https://v1.slashml.com/?utm_source=reddit_streamlit), it can build streamlit, gradio apps and host them with a unique url, from a single prompt.
 
-Sharing my recent article giving a high level overview of the Data Governance in Lakehouse using open source tools.
+The frontend is mostly vibe-coded. For the backend and hosting I use a big instance with nested virtualization and spinup a VM with every preview. The url routing is done in nginx.
 
-* The article covers a list of companies using these tools.
-* I have planned to dive deep into these tools in future articles.
-* I have explored most of tools listed, however, looking for help on Apache Ranger & Apache Atlas, especially if you have used in the Lakehouse setting.
-* If you have a tool in mind that I missed please add below.
-* Provide any feedback and suggestions.
-
-  
-Thanks for reading and providing valuable feedback!",3,2,mjfnd,2025-05-10 18:09:14,https://www.junaideffendi.com/p/data-governance-in-lakehouse-using,0,False,False,False,False
+Would love for you to try it out and any feedback would be appreciated. ",5,3,fazkan,2025-05-10 23:14:23,https://www.reddit.com/r/dataengineering/comments/1kjn1gu/single_shot_a_streamlit_and_gradio_app_into/,0,False,False,False,False
 1kjxab3,I built a database of WSL players' performance stats using data scraped from Fbref,"
 
 
@@ -101,7 +75,32 @@ I'm a beginner in terms of databases and the methods I use reflect my current un
 
 
 
-TLDR: I built a database of Women Super League players using data scraped from Fbref. The data starts from the 2021-22 till this current season. Rerunning the current season's notebooks collects and updates the database with more recent data.",3,0,play_ads,2025-05-11 09:43:48,https://github.com/second-week/women-football-database,1,False,False,False,False
+TLDR: I built a database of Women Super League players using data scraped from Fbref. The data starts from the 2021-22 till this current season. Rerunning the current season's notebooks collects and updates the database with more recent data.",2,0,play_ads,2025-05-11 09:43:48,https://github.com/second-week/women-football-database,0,False,False,False,False
+1kk9jxn,Deep research over Google Drive (open source!),"Hey r/dataengineering  community!
+
+We've added Google Drive as a connector in [Morphik](https://morphik.ai/), which is one of the most requested features.
+
+# What is Morphik?
+
+Morphik is an open-source end-to-end RAG stack. It provides both self-hosted and managed options with a python SDK, REST API, and clean UI for queries. The focus is on accurate retrieval without complex pipelines, especially for visually complex or technical documents. We have knowledge graphs, cache augmented generation, and also options to run isolated instances great for air gapped environments.
+
+# Google Drive Connector
+
+You can now connect your Drive documents directly to Morphik, build knowledge graphs from your existing content, and query across your documents with our research agent. This should be helpful for projects requiring reasoning across technical documentation, research papers, or enterprise content.
+
+Disclaimer: still waiting for app approval from google so might be one or two extra clicks to authenticate.
+
+# Links
+
+* Try it out: [https://morphik.ai](https://morphik.ai/)
+* GitHub: [https://github.com/morphik-org/morphik-core](https://github.com/morphik-org/morphik-core) (Please give us a ⭐)
+* Docs: [https://docs.morphik.ai](https://docs.morphik.ai/)
+* Discord: [https://discord.com/invite/BwMtv3Zaju](https://discord.com/invite/BwMtv3Zaju)
+
+We're planning to add more connectors soon. What sources would be most useful for your projects? Any feedback/questions welcome!
+
+# ",2,1,yes-no-maybe_idk,2025-05-11 19:46:41,https://www.reddit.com/r/dataengineering/comments/1kk9jxn/deep_research_over_google_drive_open_source/,0,False,False,False,False
+1kjxv6l,Data governance tools,"What are the data governance tools that can enable the teams to see what kind of data assets live, who and all are using a particular type of data? Suggestions are welcomed anything related to AWS or open source tools",2,1,arunrajan96,2025-05-11 10:23:19,https://www.reddit.com/r/dataengineering/comments/1kjxv6l/data_governance_tools/,0,False,False,False,False
 1kjxa2i,New project advise,"We are starting on a project which involves salesforce api, transformations and redshift db. Below are exact specs regarding the project.
 
 1) one time read and save historical data to redshift (3 million records, data size - 6 GB)
@@ -114,8 +113,46 @@ TLDR: I built a database of Women Super League players using data scraped from F
 
 5) Handling logs to handle exceptions which arise during processing.
 
-Would like to know your inputs and the approach that should be followed to develop a workflow using aws stack and helps to get an optimum solution with minimum costs ? I am planning to use glue with redshift and eventbridge.",2,0,First-Possible-1338,2025-05-11 09:43:20,https://www.reddit.com/r/dataengineering/comments/1kjxa2i/new_project_advise/,1,False,False,False,False
-1kjxv6l,Data governance tools,"What are the data governance tools that can enable the teams to see what kind of data assets live, who and all are using a particular type of data? Suggestions are welcomed anything related to AWS or open source tools",1,1,arunrajan96,2025-05-11 10:23:19,https://www.reddit.com/r/dataengineering/comments/1kjxv6l/data_governance_tools/,0,False,False,False,False
+Would like to know your inputs and the approach that should be followed to develop a workflow using aws stack and helps to get an optimum solution with minimum costs ? I am planning to use glue with redshift and eventbridge.",2,1,First-Possible-1338,2025-05-11 09:43:20,https://www.reddit.com/r/dataengineering/comments/1kjxa2i/new_project_advise/,1,False,False,False,False
+1kkaz9g,Iceberg or delta lake,"Which format is better iceberg or delta lake when you want to query from both snowflake and databricks ?? 
+
+",2,3,Own_Art1586,2025-05-11 20:48:38,https://www.reddit.com/r/dataengineering/comments/1kkaz9g/iceberg_or_delta_lake/,1,False,False,False,False
+1kkayma,Does anyone have .ova file containing Hadoop and Spark?,"Hi, 
+
+I'm looking for an .ova file containing Hadoop and Spark. The ones available on the internet seem to be missing the [start.dhs.sh](http://start.dhs.sh), etc commands.
+
+I have tried manually downloading the software, but couldn't get past the .bashrc issue, and it would not recognize the above commands. Anything that works will be great. I'm only practising, and versions don't matter.
+
+Thank you.",2,0,sacred__nelumbo,2025-05-11 20:47:50,https://www.reddit.com/r/dataengineering/comments/1kkayma/does_anyone_have_ova_file_containing_hadoop_and/,1,False,False,False,False
+1kkaode,Need help building this Project,"I recently had an meeting for a data-related internship. Just a bit about my background: I have over a year of experience working as a backend developer using Django. The company I interviewed with is a startup based in Europe, and they’re working on building their own LLM using synthetic data.
+
+I had the meeting with one of the cofounders. I applied for a data engineering role, since I’ve done some projects in that area. But the role might change a bit — from what I understood, a big part of the work is around data generation. He also mentioned that he has a project in mind for me, which may involve LLMs and fine-tuning which I need to finish in order to finally get the contract for the Job.
+
+I’ve built end-to-end pipelines before and have a basic understanding of libraries like pandas, numpy, and some machine learning models like classification and regression. Still, I’m feeling unsure and doubting myself, especially since there’s not been a detailed discussion about the project yet. Just knowing that it may involve LLMs and ML/DL is making me nervous.Because my experiences are purely Data Engineering related and Backed development.
+
+I’d really appreciate some guidance on :
+
+— how should I approach this kind of project  once assigned that requires knowledge of LLMs and ML knowing my background, which I don’t have in a good way. 
+
+Would really appreciate your efforts if you could guide me on this.
+",1,1,___Nik_,2025-05-11 20:35:16,https://www.reddit.com/r/dataengineering/comments/1kkaode/need_help_building_this_project/,0,False,False,False,False
+1kk7y09,Need advice on freelancing,"I am in the DE field since last 4.5 years and have worked on few data projects. I want to start freelancing to explore new opportunities and get wide array of skillsets, which is not always possible to gain from the day job.
+
+I need help to understand following things
+1. What skillsets are in demand for freelancing that I could learn?
+2. How many gigs are available for the grab in the market?
+3. How do I land some beginner projects( I'm ready to compromise on the fees)?
+4. How do i build the strong connections in DE so that I can build trust and create personal brand?
+
+
+I know this is like everything about freelancing in DE but any help will be appreciated.
+
+Thanks!",0,2,deadprisoner,2025-05-11 18:37:13,https://www.reddit.com/r/dataengineering/comments/1kk7y09/need_advice_on_freelancing/,0,False,False,False,False
+1kka3r2,Convert any data format to any data format,"“Spent last night vibe coding [https://anytoany.ai](https://anytoany.ai) — convert CSV, JSON, XML, YAML instantly. Paid users get 100 conversions. Clean, fast, simple. Soft launching today. Feedback welcome! ❤️”
+
+
+
+",1,1,Popular-Stay-2637,2025-05-11 20:10:14,https://www.reddit.com/r/dataengineering/comments/1kka3r2/convert_any_data_format_to_any_data_format/,0,False,False,False,False
 1kjqn0b,What data platform pain are you trying to solve most?,"Which pain is most relevant to you? Please elaborate in comments.
 
 [View Poll](https://www.reddit.com/poll/1kjqn0b)",0,4,AMDataLake,2025-05-11 02:29:43,https://www.reddit.com/r/dataengineering/comments/1kjqn0b/what_data_platform_pain_are_you_trying_to_solve/,0,False,False,False,False
