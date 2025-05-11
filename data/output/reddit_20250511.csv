@@ -1,7 +1,4 @@
 id,title,selftext,score,num_comments,author,created_utc,url,upvote_ratio,over_18,edited,spoiler,stickied
-1kjfl2n,What Platform Do You Use for Interviewing Candidates?,"It seems like basically every time I apply at a company, they have a different process. My company uses a mix of Hex notebooks we cobbled together and just asking the person questions. I am wondering if anyone has any recommendations for a seamless, one-stop platform for the entire interviewing process to test a candidate? A single platform where I can test them on DAGs (airflow / dbt), SQL, Python, system diagrams, etc and also save the feedback for each test.
-
-Thanks!",23,37,Resident-Berry3375,2025-05-10 17:29:43,https://www.reddit.com/r/dataengineering/comments/1kjfl2n/what_platform_do_you_use_for_interviewing/,0.87,False,False,False,False
 1kjo6uj,What are your ETL data cleaning/standardisation rules?,"As the title says. 
 
 We're in the process of rearchitecting our ETL pipeline design (for a multitude of reasons), and we want a step after ingestion and contract validation where we perform a light level of standardisation so data is more consistent and reusable. For context, we're a low data maturity organisation and there is little-to-no DQ governance over applications, so it's on us to ensure the data we use is fit for use.
@@ -15,8 +12,18 @@ These are our current thinking on rules; what do y'all do out there for yours?
 * *Remove invalid UTF-8 characters?? e.g. str.encode/decode process*
 * Trim leading/trailing whitespace
 
-(Deduplication is currently being debated as to whether it's a contract violation or something we handle)",21,12,Nightwyrm,2025-05-11 00:13:41,https://www.reddit.com/r/dataengineering/comments/1kjo6uj/what_are_your_etl_data_cleaningstandardisation/,0.96,False,False,False,False
-1kjcssq,I have a hive tables with 1millon rows of data and its really taking time to run join,"Hi, I have hive tables where I have 1m rows of data and I need to run inner join with where condition. I am using dataproc so can you give me good approach.. thanks",17,14,Comfortable_Page_965,2025-05-10 15:24:08,https://www.reddit.com/r/dataengineering/comments/1kjcssq/i_have_a_hive_tables_with_1millon_rows_of_data/,0.83,False,False,False,False
+(Deduplication is currently being debated as to whether it's a contract violation or something we handle)",54,22,Nightwyrm,2025-05-11 00:13:41,https://www.reddit.com/r/dataengineering/comments/1kjo6uj/what_are_your_etl_data_cleaningstandardisation/,0,False,False,False,False
+1kjfl2n,What Platform Do You Use for Interviewing Candidates?,"It seems like basically every time I apply at a company, they have a different process. My company uses a mix of Hex notebooks we cobbled together and just asking the person questions. I am wondering if anyone has any recommendations for a seamless, one-stop platform for the entire interviewing process to test a candidate? A single platform where I can test them on DAGs (airflow / dbt), SQL, Python, system diagrams, etc and also save the feedback for each test.
+
+Thanks!",23,40,Resident-Berry3375,2025-05-10 17:29:43,https://www.reddit.com/r/dataengineering/comments/1kjfl2n/what_platform_do_you_use_for_interviewing/,0,False,False,False,False
+1kk0xxg,Last 2 months I have been humbled by the data engineering landscape,"Hello All,
+
+For the past 6 years I have been working in the data analyst and data engineer role (My title is Senior Data Analyst ). I have been working with Snowflake writing stored procedures, spark using databricks, ADF for orchestration, SQL server, power BI & Tableau dashboards. All the data processing has been either monthly or quarterly. I was always under the impression that I was going to be quite employable when I try to switch at some point.
+
+But the past few months have taught me that there aren't many data analyst openings and the field doesn't pay squat and is mostly for freshers and the data engineering that I have been doing isn't really actual data engineering.
+
+All the openings I see require knowledge of Kafka, docker, kubernetes, microservices, airflow, mlops, API integration, CI/CD etc. This has left me stunned at the very least. I never knew that most of the companies required such a diverse set of skills and data engineering was more of SWE rather than what I have been doing. Seriously not sure what to think of the scenario I am in.",31,20,skatez101,2025-05-11 13:23:56,https://www.reddit.com/r/dataengineering/comments/1kk0xxg/last_2_months_i_have_been_humbled_by_the_data/,0,False,False,False,False
+1kjcssq,I have a hive tables with 1millon rows of data and its really taking time to run join,"Hi, I have hive tables where I have 1m rows of data and I need to run inner join with where condition. I am using dataproc so can you give me good approach.. thanks",21,16,Comfortable_Page_965,2025-05-10 15:24:08,https://www.reddit.com/r/dataengineering/comments/1kjcssq/i_have_a_hive_tables_with_1millon_rows_of_data/,0,False,False,False,False
 1kjjo2u,DBT full_refresh for Very Big Dataset in BigQuery,"How do we handle the initial load or backfills in BigQuery using DBT for a huge dataset?
 
 Consider the sample configuration below:
@@ -39,37 +46,15 @@ AND DATE(connection\_time) > (SELECT COALESCE(MAX(dt), ""1990-01-01"") FROM {{ t
 
 I will do some aggregations and lookup joins on the above dataset. Now, if the above source dataset (wifi\_15min) has 10B+ records per day and the expected number of partitions (DATE(connection\_time)) is 70 days, will BigQuery be able to handle 70Days\*10B=700B+ records in case of full\_refresh in a single go?
 
-Or is there a better way to handle such scenarios in DBT?",13,4,Abhishek4996,2025-05-10 20:34:09,https://www.reddit.com/r/dataengineering/comments/1kjjo2u/dbt_full_refresh_for_very_big_dataset_in_bigquery/,0.94,False,False,False,False
-1kj2vjq,How Do Companies Securely Store PCI and PII Data on the Cloud?,"Hi everyone,
-
-I’m currently looking into best practices for securely storing sensitive data like PCI (Payment Card Information) and PII (Personally Identifiable Information) in cloud environments. I know compliance and security are top priorities when dealing with this kind of data, and I’m curious how different companies approach this in real-world scenarios.
-
-A few questions I’d love to hear your thoughts on:
-	•	What cloud services or configurations do you use to store and protect PCI/PII data?
-	•	How do you handle encryption (at rest and in transit)?
-	•	Are there any specific tools or frameworks you’ve found especially useful for compliance and auditing?
-	•	How do you ensure data isolation and access control in multi-tenant cloud environments?
-
-Any insights or experiences you can share would be incredibly helpful. Thanks in advance!",8,3,Certain_Host_6517,2025-05-10 05:28:56,https://www.reddit.com/r/dataengineering/comments/1kj2vjq/how_do_companies_securely_store_pci_and_pii_data/,0.79,False,False,False,False
+Or is there a better way to handle such scenarios in DBT?",14,8,Abhishek4996,2025-05-10 20:34:09,https://www.reddit.com/r/dataengineering/comments/1kjjo2u/dbt_full_refresh_for_very_big_dataset_in_bigquery/,0,False,False,False,False
 1kjn1gu,Single shot a streamlit and gradio app into existence,"Hey everyone, wanted to share an experimental tool, [https://v1.slashml.com](https://v1.slashml.com/?utm_source=reddit_streamlit), it can build streamlit, gradio apps and host them with a unique url, from a single prompt.
 
 The frontend is mostly vibe-coded. For the backend and hosting I use a big instance with nested virtualization and spinup a VM with every preview. The url routing is done in nginx.
 
-Would love for you to try it out and any feedback would be appreciated. ",6,3,fazkan,2025-05-10 23:14:23,https://www.reddit.com/r/dataengineering/comments/1kjn1gu/single_shot_a_streamlit_and_gradio_app_into/,0.8,False,False,False,False
-1kjgh7z,Data Governance in Lakehouse Using Open Source Tools,"Hello,
+Would love for you to try it out and any feedback would be appreciated. ",4,3,fazkan,2025-05-10 23:14:23,https://www.reddit.com/r/dataengineering/comments/1kjn1gu/single_shot_a_streamlit_and_gradio_app_into/,0,False,False,False,False
+1kjx0a2,Need help deciding- ML vs DE,"So I got internship offers for both machine learning and data engineering but I’m not sure which one to pick. I don’t mind doing either and they both pay the same.
 
-Hope everyone is having a great weekend!
-
-Sharing my recent article giving a high level overview of the Data Governance in Lakehouse using open source tools.
-
-* The article covers a list of companies using these tools.
-* I have planned to dive deep into these tools in future articles.
-* I have explored most of tools listed, however, looking for help on Apache Ranger & Apache Atlas, especially if you have used in the Lakehouse setting.
-* If you have a tool in mind that I missed please add below.
-* Provide any feedback and suggestions.
-
-  
-Thanks for reading and providing valuable feedback!",1,0,mjfnd,2025-05-10 18:09:14,https://www.junaideffendi.com/p/data-governance-in-lakehouse-using,0.57,False,False,False,False
+Which one would be better in terms of future jobs opportunities, career advancement, resistance to layoffs, and pay? I don’t plan on going to grad school.",3,5,Physical-Maximum2763,2025-05-11 09:23:50,https://www.reddit.com/r/dataengineering/comments/1kjx0a2/need_help_deciding_ml_vs_de/,0,False,False,False,False
 1kjsirz,10 Must-Know Queries to Observe Snowflake Performance — Part 1,"Hi all — I recently wrote a practical guide that walks through 10 SQL queries you can use to **observe Snowflake performance** before diving into any tuning or optimization.
 
 The post includes queries to:
@@ -84,96 +69,71 @@ These are the queries I personally find most helpful when trying to understand w
 Here's the link:  
 👉 [https://medium.com/@arunkumarmadhavannair/10-must-know-queries-to-observe-snowflake-performance-part-1-f927c93a7b04](https://medium.com/@arunkumarmadhavannair/10-must-know-queries-to-observe-snowflake-performance-part-1-f927c93a7b04)
 
-Would love to hear if you use any similar queries or have other suggestions!",2,0,Neat-Resort9968,2025-05-11 04:19:58,https://www.reddit.com/r/dataengineering/comments/1kjsirz/10_mustknow_queries_to_observe_snowflake/,1.0,False,False,False,False
-1kjt4w6,How to open my DE career?,"I’m a MDS. I’m full of anxiety about my life. I’m 27 this year. In my course map, I am going to learn data analysis and big data. I’m have searched on wiki. They tell me the same things again and again, you have to control SQL …… I want to get some DE’s directions.
+Would love to hear if you use any similar queries or have other suggestions!",3,0,Neat-Resort9968,2025-05-11 04:19:58,https://www.reddit.com/r/dataengineering/comments/1kjsirz/10_mustknow_queries_to_observe_snowflake/,0,False,False,False,False
+1kjgh7z,Data Governance in Lakehouse Using Open Source Tools,"Hello,
 
-",1,1,cola1917,2025-05-11 04:58:18,https://www.reddit.com/r/dataengineering/comments/1kjt4w6/how_to_open_my_de_career/,1.0,False,False,False,False
+Hope everyone is having a great weekend!
+
+Sharing my recent article giving a high level overview of the Data Governance in Lakehouse using open source tools.
+
+* The article covers a list of companies using these tools.
+* I have planned to dive deep into these tools in future articles.
+* I have explored most of tools listed, however, looking for help on Apache Ranger & Apache Atlas, especially if you have used in the Lakehouse setting.
+* If you have a tool in mind that I missed please add below.
+* Provide any feedback and suggestions.
+
+  
+Thanks for reading and providing valuable feedback!",3,2,mjfnd,2025-05-10 18:09:14,https://www.junaideffendi.com/p/data-governance-in-lakehouse-using,0,False,False,False,False
+1kjxab3,I built a database of WSL players' performance stats using data scraped from Fbref,"
+
+
+On one hand, I needed the data as I wanted to analyse the performance of my favourite players in the Women Super League. On the other hand, I'd finished an Introduction To Databases course offered by CS50 and the final project was to build a database.
+
+So killing both birds with one stone, I built the database using data starting from the 2021-22 season and until this current season (2024-25). 
+
+I scrape and clean the data in notebooks, multiple notebooks as there are multiple tables focusing on different aspects of performance e.g. shooting, passing, defending, goalkeeping, pass types etc.
+
+I then create relationships across the tables and then load them into a database I created in Google's BigQuery. 
+
+At first I collected and only used data from previous seasons to set up the database, before updating it with this current season's data. As the current season hasn't ended (actually ended last Saturday), I wanted to be able to handle more recent updates by just rerunning the notebooks without affecting other season's data. That's why the current season is handled in a different folder, and newer seasons will have their own folders too.
+
+I'm a beginner in terms of databases and the methods I use reflect my current understanding.
+
+
+
+TLDR: I built a database of Women Super League players using data scraped from Fbref. The data starts from the 2021-22 till this current season. Rerunning the current season's notebooks collects and updates the database with more recent data.",3,0,play_ads,2025-05-11 09:43:48,https://github.com/second-week/women-football-database,1,False,False,False,False
+1kjxa2i,New project advise,"We are starting on a project which involves salesforce api, transformations and redshift db. Below are exact specs regarding the project.
+
+1) one time read and save historical data to redshift (3 million records, data size - 6 GB)
+
+2) Read incremental data on a daily basis from salesforce using api (to query 100000 records per batch)
+
+3) perform data transformations using data quality rules
+
+4) saving final data by implementing data merging using upserts to redshift table
+
+5) Handling logs to handle exceptions which arise during processing.
+
+Would like to know your inputs and the approach that should be followed to develop a workflow using aws stack and helps to get an optimum solution with minimum costs ? I am planning to use glue with redshift and eventbridge.",2,0,First-Possible-1338,2025-05-11 09:43:20,https://www.reddit.com/r/dataengineering/comments/1kjxa2i/new_project_advise/,1,False,False,False,False
+1kjxv6l,Data governance tools,"What are the data governance tools that can enable the teams to see what kind of data assets live, who and all are using a particular type of data? Suggestions are welcomed anything related to AWS or open source tools",1,1,arunrajan96,2025-05-11 10:23:19,https://www.reddit.com/r/dataengineering/comments/1kjxv6l/data_governance_tools/,0,False,False,False,False
 1kjqn0b,What data platform pain are you trying to solve most?,"Which pain is most relevant to you? Please elaborate in comments.
 
-[View Poll](https://www.reddit.com/poll/1kjqn0b)",0,0,AMDataLake,2025-05-11 02:29:43,https://www.reddit.com/r/dataengineering/comments/1kjqn0b/what_data_platform_pain_are_you_trying_to_solve/,0.5,False,False,False,False
-1kjamwr,need feedback for this about this streaming httpx request,"so I'm downloading certain data from an API, I'm going for streaming since their server cluster randomly closes connections.
+[View Poll](https://www.reddit.com/poll/1kjqn0b)",0,4,AMDataLake,2025-05-11 02:29:43,https://www.reddit.com/r/dataengineering/comments/1kjqn0b/what_data_platform_pain_are_you_trying_to_solve/,0,False,False,False,False
+1kjuwnl,Do People Actually Code as They Climb the Career Ladder?,"Do People Actually Code as They Climb the Career Ladder?
 
-this is just a sketch of what I'm doing, I plan on reworking it later for better logging and skipping downloaded files, but I want to test what happens if the connection fails for whatever reason, but i never used streaming before.
+When I first started my career in tech more than a decade ago, I had this naive assumption that coding was something you did forever, no matter where you were on the career ladder.
 
-Process, three levels of loops, project, dates, endpoints.
+But as I’ve climbed higher up the ladder, I’ve realized it’s not quite that simple.
 
-inside those, I want to stream the call to those files, if I get 200 then just write.
+The truth is, your role evolves. And while coding remains a critical part of many tech careers, its prominence shifts depending on the level you’re at. Here’s what I’ve learned along the way --
 
-if I get 429 sleep for 61 seconds and retry.
+🔸In the beginning, coding is everything. You’re building your foundation - learning programming languages, frameworks, and debugging skills.
+🔸As you grow into mid-level roles, things start to change. You’re no longer just executing tasks but you’re leading small teams, mentoring juniors, and contributing to architectural decisions. Your value isn’t just in writing code but also in understanding *why* certain solutions are chosen over others.
+🔸By the time you reach senior or lead positions, your focus has likely shifted even further away from daily coding. Instead, you’re setting technical direction, defining best practices, and ensuring alignment across teams. Yes, you might still dive into code occasionally, but it’s usually to unblock critical issues or set an example.
+🔸If you move into management, or even executive roles, your relationship with coding will transform again. At this point, your primary responsibility is people and strategy. Writing code becomes rare, though having a strong technical background gives you credibility and insight into challenges your team faces.
 
-if 504 (connection closed at their end), sleep 61s, consume one retry
+So… Do People Actually Code As They Climb?
 
-anything else, throw the exception, sleep 61s and consume one retry
+🔺Yes, but the amount and type of coding vary greatly depending on your role. For individual contributors (ICs), especially those aiming for principal engineer tracks, coding remains central. For managers or leaders, it becomes more about guiding strategy and enabling others to shine.
 
-I tried forcing 429 by calling that thing seven times (supposed to be 4 requests per minutes), but it isn't happening, and I need a sanity check.
-
-I'd also probably need to async this at project level thing but that's a level of complexity that I don't need now (each project have its own different limit)
-
-    import time
-    import pandas as pd
-    import helpers
-    import httpx
-    import get_data
-    
-    iterable_users_export_path = helpers.prep_dir(
-        r""imsdatablob/Iterable Exports/data_csv/Iterable Users Export""
-    )
-    iterable_datacsv_endpoint_paths = {
-        ""emailSend"": helpers.prep_dir(r""imsdatablob/Iterable Exports/data_csv/Iterable emailSend Export""),
-        ""emailOpen"": helpers.prep_dir(r""imsdatablob/Iterable Exports/data_csv/Iterable emailOpen Export""),
-        ""emailClick"": helpers.prep_dir(r""imsdatablob/Iterable Exports/data_csv/Iterable emailClick Export""),
-        ""hostedUnsubscribeClick"": helpers.prep_dir(r""imsdatablob/Iterable Exports/data_csv/Iterable hostedUnsubscribeClick Export""),
-        ""emailComplaint"": helpers.prep_dir(r""imsdatablob/Iterable Exports/data_csv/Iterable emailComplaint Export""),
-        ""emailBounce"": helpers.prep_dir(r""imsdatablob/Iterable Exports/data_csv/Iterable emailBounce Export""),
-        ""emailSendSkip"": helpers.prep_dir(r""imsdatablob/Iterable Exports/data_csv/Iterable emailSendSkip Export""),
-    }
-    
-    
-    start_date = ""2025-04-01""
-    last_download_date = time.strftime(""%Y-%m-%d"", time.localtime(time.time() - 60*60*24*2))
-    date_range = pd.date_range(start=start_date, end=last_download_date)
-    date_range = date_range.strftime(""%Y-%m-%d"").tolist()
-    
-    
-    iterableProjects_list = get_data.get_iterableprojects_df().to_dict(orient=""records"")
-    
-    with httpx.Client(timeout=150) as client:
-    
-        for project in iterableProjects_list:
-            iterable_headers = {""api-key"": project[""projectKey""]}
-            for d in date_range:
-                end_date = (pd.to_datetime(d) + pd.DateOffset(days=1)).strftime(""%Y-%m-%d"")
-    
-                for e in iterable_datacsv_endpoint_paths:
-                    url = f""https://api.iterable.com/api/export/data.csv?dataTypeName={e}&range=All&delimiter=%2C&startDateTime={d}&endDateTime={end_date}""
-                    file = f""{iterable_datacsv_endpoint_paths[e]}/sfn_{project['projectName']}-d_{d}.csv""
-                    retries = 0
-                    max_retries = 10
-                    while retries < max_retries:
-                        try:
-                            with client.stream(""GET"", url, headers=iterable_headers, timeout=30) as r:
-                                if r.status_code == 200:
-                                    with open(file, ""w"") as file:
-                                        for chunk in r.iter_lines():
-                                            file.write(chunk)
-                                            file.write('\n')
-                                    break
-    
-                                elif r.status_code == 429:
-                                    time.sleep(61)
-                                    print(f""429 for {project['projectName']}-{e} -{start_date}"")
-                                    continue
-                                elif r.status_code == 504:
-                                    retries += 1
-                                    print(f""504 {project['projectName']}-{e} -{start_date}"")
-                                    time.sleep(61)
-                                    continue
-                        except Exception as excp:
-                            retries += 1
-                            print(f""{excp} {project['projectName']}-{e} -{start_date}"")
-                            time.sleep(61)
-                            if retries == max_retries:
-                                print(f""This was the last retry: {project['projectName']}-{e} -{start_date}"")",0,0,Moamr96,2025-05-10 13:44:45,https://www.reddit.com/r/dataengineering/comments/1kjamwr/need_feedback_for_this_about_this_streaming_httpx/,0.5,False,1746885025.0,False,False
-1kj499m,AWS Cost Optimization,"Hello everyone,
-
-Our org is looking ways to reduce cost, what are the best ways to reduce AWS cost? Top services used glue, sagemaker, s3 etc",0,21,arunrajan96,2025-05-10 07:01:58,https://www.reddit.com/r/dataengineering/comments/1kj499m/aws_cost_optimization/,0.5,False,False,False,False
+To anyone navigating this path, I’d love to hear your thoughts. How has your relationship with coding changed as you’ve grown in your career?",0,8,arvindspeaks,2025-05-11 06:57:10,https://www.reddit.com/r/dataengineering/comments/1kjuwnl/do_people_actually_code_as_they_climb_the_career/,0,False,False,False,False
