@@ -11,7 +11,7 @@ The steps realized during this project includes:
 - Set up Redshift cluster and load data into Amazon Redshift for analytics
 
 ## Architecture
-![Project Architecture](project_architecture\reddit_project_architecture.png)
+![Project Architecture](project_architecture/reddit_project_architecture.png)
 
 # Executing the project
 
